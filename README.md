@@ -5,6 +5,8 @@ ComfyUI implementation of [Video Color Grading via Look-Up Table Generation](htt
 Generates a 3D color LUT from a reference image and source video frames using a two-stage diffusion process, then applies it for consistent color grading.
 
 
+![screenshot](screenshot.png)
+
 ## Nodes
 
 - **Load VCG Model** - Loads the combined model checkpoint (CLIP ViT-B/32, VAE, ReferenceNet, L-Diffuser)
