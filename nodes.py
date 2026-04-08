@@ -228,20 +228,18 @@ class VCGApplyLUT(IO.ComfyNode):
             inputs=[
                 IO.Image.Input("images"),
                 VCG_LUT.Input("lut"),
-                IO.Float.Input("strength", default=1.0, min=0.0, max=2.0, step=0.01, optional=True, tooltip="LUT strength: 0=no effect, 1=full effect, >1=exaggerated"),
+                IO.Float.Input("strength", default=1.0, min=0.0, max=2.0, step=0.01, optional=True, tooltip="LUT strength: 0=original images, 1=full effect, >1=exaggerated"),
+                IO.Image.Input("original_images", optional=True, tooltip="Original source frames to blend towards at lower strength"),
             ],
             outputs=[IO.Image.Output()],
         )
 
 
     @classmethod
-    def execute(cls, images, lut, strength=1.0):
+    def execute(cls, images, lut, strength=1.0, original_images=None):
         device = comfy.model_management.intermediate_device()
         dtype = images.dtype
         lut_3d = torch.from_numpy(lut["values"].reshape(16, 16, 16, 3).astype(np.float32))
-        if strength != 1.0:
-            identity = torch.from_numpy(make_identity_lut(16).reshape(16, 16, 16, 3).astype(np.float32))
-            lut_3d = identity + strength * (lut_3d - identity)
         lut_vol = lut_3d.permute(3, 0, 1, 2).unsqueeze(0).to(device=device, dtype=dtype)
         B = images.shape[0]
         output = torch.empty_like(images)
@@ -251,4 +249,7 @@ class VCGApplyLUT(IO.ComfyNode):
             result = torch.nn.functional.grid_sample(lut_vol, grid, mode='bilinear', padding_mode='border', align_corners=True)
             output[i] = result[0, :, :, :, 0].permute(1, 2, 0).cpu()
             pbar.update(1)
+        if strength != 1.0:
+            blend_target = original_images if original_images is not None else images
+            output = blend_target + strength * (output - blend_target)
         return IO.NodeOutput(output)
